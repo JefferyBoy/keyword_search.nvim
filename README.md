@@ -1,4 +1,4 @@
-# git_diff.nvim
+# keyword_search.nvim
 
 A Neovim plugin very easy to search content
 Espectial in log analyse
