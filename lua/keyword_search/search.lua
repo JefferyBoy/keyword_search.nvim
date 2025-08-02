@@ -120,14 +120,6 @@ function M.search_this_buffer_to_new()
 	local pattern = vim.fn.eval("@/")
 	local results = {}
 	local results_buf_name = "Search: " .. pattern .. " buf = " .. buf
-	for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
-		local buf_name = vim.api.nvim_buf_get_name(buf_id)
-		buf_name = string.match(buf_name, "([^/]+)$") or ""
-		if buf_name == results_buf_name then
-			vim.api.nvim_command("buffer " .. buf_id)
-			return
-		end
-	end
 	local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
 	for _, line in ipairs(lines) do
 		if string_util.find_ignore_case(line, pattern) then
